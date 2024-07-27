@@ -18,10 +18,17 @@ function App() {
     setShowVideoPlayer(true);
   };
 
+  const handleCloseVideoPlayer = () => {
+    setShowVideoPlayer(false);
+  };
+
   return (
     <>
       {showVideoPlayer ? (
-        <VideoPlayer url={activeVideo.url} />
+        <VideoPlayer
+          url={activeVideo.url}
+          handleClose={handleCloseVideoPlayer}
+        />
       ) : (
         <>
           <VideoPreview

@@ -5,9 +5,9 @@ import styles from './VideoPlayer.module.scss';
 import ProgressBar from '../UI/controls/progressBar/ProgressBar';
 import VolumeBar from '../UI/controls/volumeBar/VolumeBar';
 import SceneList from '../SceneList/SceneList';
-import CustomButton from '../UI/CustomButton/CustomButton';
 import TenSeconds from '../UI/controls/tenSeconds/TenSeconds';
 import SceneToggleButton from '../UI/controls/sceneToggleButton/SceneToggleButton';
+import CustomButton from '../UI/CustomButton/CustomButton';
 
 const scenes = [
   {
@@ -102,7 +102,10 @@ const scenes = [
   },
 ];
 
-const VideoPlayer: FC<IVideo> = ({ url }) => {
+const VideoPlayer: FC<IVideo & { handleClose: () => void }> = ({
+  url,
+  handleClose,
+}) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<RxPlayer | null>(null);
 
@@ -240,6 +243,24 @@ const VideoPlayer: FC<IVideo> = ({ url }) => {
 
   return (
     <div className={styles.videoPlayer}>
+      <CustomButton onClick={handleClose} className="closeVideoPlayer">
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M4 7H15C17.7614 7 20 9.23857 20 12C20 14.7614 17.7614 17 15 17M4 7L7 4M4 7L7 10M8.00001 17H11"
+            stroke="#FFF"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </CustomButton>
+
       <video ref={videoRef} controls={false} onClick={togglePlayPause} />
 
       <div className={styles.controls}>
