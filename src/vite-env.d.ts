@@ -1,7 +1,12 @@
 /// <reference types="vite/client" />
 
-interface IVideoProps {
+interface IVideo {
+  id: number;
+  title: string;
+  description: string;
+  logo?: string;
+  poster?: string;
   url: string;
-  beginTimecode?: number;
-  endTimecode?: number;
+  beginTimecode: number;
+  endTimecode: number;
 }
