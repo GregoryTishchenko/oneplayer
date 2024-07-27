@@ -15,6 +15,7 @@ const VideoGallery: FC<IVideoGallery> = ({ videos, onVideoSelect }) => {
           <div className={styles.poster}>
             <img
               tabIndex={0}
+              role="button"
               src={video.poster}
               alt={video.title}
               className={styles.poster}

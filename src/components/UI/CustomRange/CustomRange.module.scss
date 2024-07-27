@@ -1,0 +1,40 @@
+.range {
+  flex: 1;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  background: #FFF;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  transition: background 0.3s;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #ffd724;
+    cursor: pointer;
+  }
+
+  &::-moz-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #ffd724;
+    cursor: pointer;
+  }
+
+  &::-ms-thumb {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background: #ffd724;
+    cursor: pointer;
+  }
+}

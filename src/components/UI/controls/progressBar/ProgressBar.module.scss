@@ -1,0 +1,13 @@
+.progressBarContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0;
+  box-sizing: border-box;
+
+  .timeInfo {
+    margin-left: 1rem;
+    font-size: 1rem;
+    color: #fff;
+  }
+}

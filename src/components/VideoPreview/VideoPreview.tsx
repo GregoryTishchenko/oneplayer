@@ -3,14 +3,17 @@ import RxPlayer from 'rx-player';
 import styles from './VideoPreview.module.scss';
 
 import MuteButton from '../UI/controls/mute/MuteButton';
+import CustomButton from '../UI/CustomButton/CustomButton';
+import { IVideoPreview } from './VideoPreview.types';
 
-const VideoPreview: FC<IVideo> = ({
+const VideoPreview: FC<IVideoPreview> = ({
   title,
   description,
   logo,
   url,
   beginTimecode,
   endTimecode,
+  onPlayVideo,
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<RxPlayer | null>(null);
@@ -55,12 +58,13 @@ const VideoPreview: FC<IVideo> = ({
 
     // Clean resources on unmount
     return () => {
+      if (videoRef.current) {
+        videoRef.current.removeEventListener('timeupdate', onTimeUpdate);
+      }
+
       if (currentPlayer) {
         currentPlayer.stop();
         currentPlayer.dispose();
-      }
-      if (videoRef.current) {
-        videoRef.current.removeEventListener('timeupdate', onTimeUpdate);
       }
     };
   }, [url, beginTimecode, endTimecode]);
@@ -80,8 +84,10 @@ const VideoPreview: FC<IVideo> = ({
         {logo ? <img src={logo} alt={title} /> : <h2>{title}</h2>}
         <p>{description}</p>
         <div className={styles.controls}>
-          <button>Voir</button>
-          <button>Plus d'info</button>
+          <CustomButton border={true} onClick={onPlayVideo}>
+            Voir la vidéo
+          </CustomButton>
+          <CustomButton border={true}>Plus d'info</CustomButton>
           <MuteButton isMuted={isMuted} onToggle={toggleMute} />
         </div>
       </div>

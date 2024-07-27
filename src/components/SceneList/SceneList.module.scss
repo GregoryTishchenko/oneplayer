@@ -1,0 +1,28 @@
+.sceneListContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  z-index: 1;
+  padding: 2rem 2rem 5rem 7rem;
+  text-align: right;
+  background: linear-gradient(-90deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.50) 70%, rgba(10, 10, 10, 0.30) 80%, rgba(10, 10, 10, 0.10) 90%, rgba(10, 10, 10, 0) 100%);
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    button {
+      border: none;
+      background-color: transparent;
+      color: #FFF;
+      font-weight: 500;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      
+      &:hover {
+        color: #ffd724;
+      }
+    }
+  }
+}
