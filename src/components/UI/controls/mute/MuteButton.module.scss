@@ -1,0 +1,20 @@
+.button {
+  position: absolute;
+  width: 3.5rem;
+  height: 3.5rem;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all .3s;
+  &:hover,
+  &:focus {
+    background-color: rgba(0, 0, 0, 0.6);
+  }
+}
