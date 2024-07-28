@@ -29,7 +29,7 @@
       background-color: transparent;
       color: #FFF;
       font-weight: 500;
-      font-size: 0.875rem;
+      font-size: 1rem;
       text-align: right;
       cursor: pointer;
       transition: all 0.3s;
@@ -37,6 +37,37 @@
       &:hover {
         color: #ffd724;
       }
+    }
+  }
+
+  .accordion {
+    font-size: 0.875rem;
+    padding: 2rem 2rem;
+    background: linear-gradient(-90deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.1) 70%, rgba(10, 10, 10, 0.1) 80%, rgba(10, 10, 10, 0.1) 90%, rgba(10, 10, 10, 0) 100%);
+
+    overflow: hidden;
+
+    h4 {
+      margin: 0 0 0.5rem;
+      font-weight: 500;
+      font-size: 0.875rem;
+      color: #ffd724;
+    }
+    li {
+      display: block;
+      color: #FFF;
+
+      span {
+        font-weight: 500;
+        color: #ffd724;
+        margin-right: 0.5rem;
+      }
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 0.875rem;
+      float: right;
+      margin-top: 0.5rem;
     }
   }
 

@@ -11,7 +11,12 @@ import { IVideoPlayer } from './VideoPlayer.types';
 import ApiServices from '../../Api/ApiServices';
 import useFetch from '../../hooks/useFetch';
 
-const VideoPlayer: FC<IVideoPlayer> = ({ url, scenesApi, handleClose }) => {
+const VideoPlayer: FC<IVideoPlayer> = ({
+  url,
+  scenesApi,
+  sceneDetailsApi,
+  handleClose,
+}) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<RxPlayer | null>(null);
 
@@ -211,6 +216,7 @@ const VideoPlayer: FC<IVideoPlayer> = ({ url, scenesApi, handleClose }) => {
           scenes={scenes}
           onSceneClick={onSceneClick}
           onClose={() => setIsSceneListVisible(false)}
+          sceneDetailsApi={sceneDetailsApi}
         />
       )}
     </div>

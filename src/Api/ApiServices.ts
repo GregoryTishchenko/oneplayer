@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { IScene } from '../components/SceneList/SceneList.typees';
+import { IScene, ISceneDetails } from '../components/SceneList/SceneList.typees';
 import { ICrew } from '../components/CrewList/CrewList.types';
 
 export default class ApiServices {
   /**
    * Fetches scenes list from API.
+   * @param {string} url - API url.
    * @returns {Promise<IScene[]>} - A promise resolving to the scenes list.
    */
   static async getScenes(url: string): Promise<IScene[]> {
@@ -19,6 +20,7 @@ export default class ApiServices {
 
   /**
    * Fetches crew list from API.
+   * @param {string} url - API url.
    * @returns {Promise<ICrew[]>} - A promise resolving to the crew list.
    */
   static async getCrew(url: string): Promise<ICrew[]> {
@@ -27,6 +29,23 @@ export default class ApiServices {
       return response.data;
     } catch (error) {
       ApiServices.handleError('Error fetching crew list', error);
+      throw error;
+    }
+  }
+
+  /**
+   * Fetches detailed scene information by timecode.
+   * @param {string} url - API url.
+   * @param {number} timecode - The timecode of the scene to fetch.
+   * @returns {Promise<ISceneDetails>} - A promise resolving to the scene details.
+   */
+  static async getSceneDetails(url: string, timecode: number): Promise<ISceneDetails> {
+    try {
+      const response = await axios.get<ISceneDetails>(`${url}${timecode}`);
+      console.log(response.data)
+      return response.data;
+    } catch (error) {
+      ApiServices.handleError('Error fetching scene details', error);
       throw error;
     }
   }

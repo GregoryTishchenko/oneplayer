@@ -11,4 +11,5 @@ interface IVideo {
   endTimecode: number;
   scenesApi?: string;
   crewApi?: string;
+  sceneDetailsApi?: string;
 }

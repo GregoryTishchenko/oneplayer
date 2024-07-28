@@ -18,7 +18,8 @@ export const mockData: IVideo[] = [
     beginTimecode: 244,
     endTimecode: 264,
     scenesApi: 'https://teamplayer.ddns.net:9094/scenes',
-    crewApi: 'https://teamplayer.ddns.net:9094/crew'
+    crewApi: 'https://teamplayer.ddns.net:9094/crew',
+    sceneDetailsApi: 'https://teamplayer.ddns.net:9094/scene/'
   },
   {
     id: 2,

@@ -139,7 +139,7 @@ const VideoPreview: FC<IVideoPreview> = ({
 
       <video ref={videoRef} autoPlay loop muted={isMuted} controls={false} />
 
-      {isCrewListVisible && (
+      {isCrewListVisible && crew.length > 0 && (
         <CrewList
           loading={isLoading}
           error={error}
