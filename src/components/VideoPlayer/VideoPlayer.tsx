@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState, FC, ChangeEvent } from 'react';
 import RxPlayer from 'rx-player';
-import PlayPauseButton from '../UI/controls/play/PlayPauseButton';
 import styles from './VideoPlayer.module.scss';
 import ProgressBar from '../UI/controls/progressBar/ProgressBar';
 import VolumeBar from '../UI/controls/volumeBar/VolumeBar';
 import SceneList from '../SceneList/SceneList';
-import TenSeconds from '../UI/controls/tenSeconds/TenSeconds';
-import SceneToggleButton from '../UI/controls/sceneToggleButton/SceneToggleButton';
 import CustomButton from '../UI/CustomButton/CustomButton';
+import CustomButtonStyles from '../UI/CustomButton/CustomButton.module.scss';
+import { IScene } from '../SceneList/SceneList.typees';
 
 const scenes = [
   {
@@ -207,12 +206,7 @@ const VideoPlayer: FC<IVideo & { handleClose: () => void }> = ({
     }
   };
 
-  const onSceneClick = (scene: {
-    id: number;
-    title: string;
-    beginTimecode: number;
-    endTimecode: number;
-  }) => {
+  const onSceneClick = (scene: IScene) => {
     setCurrentScene(scene);
     if (playerRef.current) {
       playerRef.current.seekTo(scene.beginTimecode);
@@ -264,13 +258,28 @@ const VideoPlayer: FC<IVideo & { handleClose: () => void }> = ({
       <video ref={videoRef} controls={false} onClick={togglePlayPause} />
 
       <div className={styles.controls}>
-        <PlayPauseButton
-          isPlaying={isPlaying}
-          onTogglePlayPause={togglePlayPause}
-        />
+        <CustomButton
+          className={`${CustomButtonStyles.button} ${
+            CustomButtonStyles['button--play']
+          } ${isPlaying ? CustomButtonStyles.active : ''}`}
+          onClick={togglePlayPause}
+        >
+          <span className="sr-only">{isPlaying ? 'Pause' : 'Play'}</span>
+        </CustomButton>
 
-        <TenSeconds direction="rewind" onClick={rewind10Seconds} />
-        <TenSeconds direction="forward" onClick={forward10Seconds} />
+        <CustomButton
+          className={`${CustomButtonStyles.button} ${CustomButtonStyles['button--rewind']}`}
+          onClick={rewind10Seconds}
+        >
+          <span className="sr-only">Rewind 10 seconds</span>
+        </CustomButton>
+
+        <CustomButton
+          className={`${CustomButtonStyles.button} ${CustomButtonStyles['button--forward']}`}
+          onClick={forward10Seconds}
+        >
+          <span className="sr-only">Forward 10 seconds</span>
+        </CustomButton>
 
         <ProgressBar
           currentTime={currentTime}
@@ -280,7 +289,16 @@ const VideoPlayer: FC<IVideo & { handleClose: () => void }> = ({
 
         <VolumeBar volume={volume} onVolumeChange={handleVolumeChange} />
 
-        <SceneToggleButton onClick={toggleSceneList} />
+        <CustomButton
+          className={`${CustomButtonStyles.button} ${
+            CustomButtonStyles['button--scenec']
+          } ${isPlaying ? CustomButtonStyles.active : ''}`}
+          onClick={toggleSceneList}
+        >
+          <span className="sr-only">
+            {isSceneListVisible ? 'Hide' : 'Show'}
+          </span>
+        </CustomButton>
       </div>
 
       {isSceneListVisible && (

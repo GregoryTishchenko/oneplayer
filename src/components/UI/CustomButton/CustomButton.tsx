@@ -3,10 +3,8 @@ import { FC } from 'react';
 import styles from './CustomButton.module.scss';
 import { ICustomButton } from './CustomButton.types';
 
-const CustomButton: FC<ICustomButton> = ({ children, border, ...props }) => {
-  const combinedClassName = border
-    ? `${styles.button} ${styles.button__border}`
-    : styles.button;
+const CustomButton: FC<ICustomButton> = ({ children, className, ...props }) => {
+  const combinedClassName = `${styles.button} ${className}`;
 
   return (
     <button {...props} className={combinedClassName}>

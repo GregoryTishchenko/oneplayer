@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState, FC } from 'react';
 import RxPlayer from 'rx-player';
-import styles from './VideoPreview.module.scss';
 
-import MuteButton from '../UI/controls/mute/MuteButton';
-import CustomButton from '../UI/CustomButton/CustomButton';
+import styles from './VideoPreview.module.scss';
 import { IVideoPreview } from './VideoPreview.types';
+
+import CustomButton from '../UI/CustomButton/CustomButton';
+import CustomButtonStyles from '../UI/CustomButton/CustomButton.module.scss';
 
 const VideoPreview: FC<IVideoPreview> = ({
   title,
@@ -84,11 +85,23 @@ const VideoPreview: FC<IVideoPreview> = ({
         {logo ? <img src={logo} alt={title} /> : <h2>{title}</h2>}
         <p>{description}</p>
         <div className={styles.controls}>
-          <CustomButton border={true} onClick={onPlayVideo}>
+          <CustomButton
+            className={CustomButtonStyles['button--border']}
+            onClick={onPlayVideo}
+          >
             Voir la vidéo
           </CustomButton>
-          <CustomButton border={true}>Plus d'info</CustomButton>
-          <MuteButton isMuted={isMuted} onToggle={toggleMute} />
+          <CustomButton className={CustomButtonStyles['button--border']}>
+            Plus d'info
+          </CustomButton>
+          <CustomButton
+            className={`${CustomButtonStyles.button} ${
+              CustomButtonStyles['button--mute']
+            } ${isMuted ? CustomButtonStyles.active : ''}`}
+            onClick={toggleMute}
+          >
+            <span className="sr-only">{isMuted ? 'Unmute' : 'Mute'}</span>
+          </CustomButton>
         </div>
       </div>
       <video ref={videoRef} autoPlay loop muted={isMuted} controls={false} />
