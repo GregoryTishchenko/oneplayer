@@ -7,22 +7,43 @@
   padding: 2rem 2rem 5rem 7rem;
   text-align: right;
   background: linear-gradient(-90deg, rgba(10, 10, 10, 1) 0%, rgba(10, 10, 10, 0.50) 70%, rgba(10, 10, 10, 0.30) 80%, rgba(10, 10, 10, 0.10) 90%, rgba(10, 10, 10, 0) 100%);
+
+  h3 {
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
   ul {
     padding: 0;
     margin: 0;
     list-style: none;
+    text-align: right;
+    overflow: auto;
+    height: calc(100% - 7rem);
+
     button {
       border: none;
       background-color: transparent;
       color: #FFF;
       font-weight: 500;
       font-size: 0.875rem;
+      text-align: right;
       cursor: pointer;
       transition: all 0.3s;
       
       &:hover {
         color: #ffd724;
       }
+    }
+  }
+
+  @media (max-width: 800px) {
+    padding: 1rem 1rem 5rem 7rem;
+    ul {
+      height: calc(100% - 5rem);
     }
   }
 }

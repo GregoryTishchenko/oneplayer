@@ -16,14 +16,15 @@ const SceneList: FC<ISceneList> = ({
       role="dialog"
       aria-labelledby="sceneListTitle"
     >
-      <CustomButton
-        className={`${CustomButtonStyles.button} ${CustomButtonStyles['button--close']}`}
-        onClick={onClose}
-      >
-        <span className="sr-only">Fermer la liste des scènes</span>
-      </CustomButton>
-
-      <h3 id="sceneListTitle">Scènes</h3>
+      <h3 id="sceneListTitle">
+        Scènes
+        <CustomButton
+          className={`${CustomButtonStyles.button} ${CustomButtonStyles['button--close']}`}
+          onClick={onClose}
+        >
+          <span className="sr-only">Fermer la liste des scènes</span>
+        </CustomButton>
+      </h3>
       {loading && <p>Loading...</p>}
       {scenes.length > 0 ? (
         <ul role="list">

@@ -9,5 +9,10 @@
     margin-left: 1rem;
     font-size: 1rem;
     color: #fff;
+
+    @media (max-width: 800px) {
+      margin-left: 0.5rem;
+      font-size: 0.75rem;
+    }
   }
 }
