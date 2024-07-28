@@ -116,6 +116,7 @@ const VideoPreview: FC<IVideoPreview> = ({
           >
             Voir la vidéo
           </CustomButton>
+
           {crew.length > 0 && (
             <CustomButton
               className={CustomButtonStyles['button--border']}
@@ -124,6 +125,7 @@ const VideoPreview: FC<IVideoPreview> = ({
               Plus d'info
             </CustomButton>
           )}
+
           <CustomButton
             className={`${CustomButtonStyles.button} ${
               CustomButtonStyles['button--mute']

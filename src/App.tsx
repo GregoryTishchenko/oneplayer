@@ -29,7 +29,11 @@ function App() {
       ) : (
         <>
           <VideoPreview {...activeVideo} onPlayVideo={handlePlayVideo} />
-          <VideoGallery videos={mockData} onVideoSelect={handleVideoSelect} />
+          <VideoGallery
+            videos={mockData}
+            onPlayVideo={handlePlayVideo}
+            onVideoSelect={handleVideoSelect}
+          />
         </>
       )}
     </>
