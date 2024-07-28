@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { IScene } from '../components/SceneList/SceneList.typees';
-import { ICrew } from '../components/CrewList/CrewList';
+import { ICrew } from '../components/CrewList/CrewList.types';
 
 export default class ApiServices {
   /**
@@ -31,9 +31,6 @@ export default class ApiServices {
     }
   }
 
-  
-
-
   /**
    * Handles API errors by logging them.
    * @param {string} message - Custom error message.
@@ -43,5 +40,4 @@ export default class ApiServices {
     const errorMessage = (error instanceof Error) ? error.message : 'An unknown error occurred';
     console.error(`${message}: ${errorMessage}`);
   }
-
 }
