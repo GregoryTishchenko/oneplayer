@@ -4,6 +4,12 @@ import { ISceneList } from './SceneList.typees';
 import CustomButton from '../UI/CustomButton/CustomButton';
 import CustomButtonStyles from '../UI/CustomButton/CustomButton.module.scss';
 
+const formatTime = (timecode: number): string => {
+  const minutes = Math.floor(timecode / 60);
+  const seconds = timecode % 60;
+  return `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+};
+
 const SceneList: FC<ISceneList> = ({
   scenes,
   loading,
@@ -34,7 +40,8 @@ const SceneList: FC<ISceneList> = ({
                 onClick={() => onSceneClick(scene)}
                 aria-label={`Accédez à la scène : ${scene.title}`}
               >
-                {scene.title}
+                {scene.title} ({formatTime(scene.beginTimecode)} -{' '}
+                {formatTime(scene.endTimecode)})
               </button>
             </li>
           ))}

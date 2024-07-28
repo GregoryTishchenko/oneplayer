@@ -2,11 +2,7 @@ import { FC } from 'react';
 import styles from './VideoGallery.module.scss';
 import { IVideoGallery } from './VideoGallery.types';
 
-const VideoGallery: FC<IVideoGallery> = ({
-  videos,
-  onPlayVideo,
-  onVideoSelect,
-}) => {
+const VideoGallery: FC<IVideoGallery> = ({ videos, onVideoSelect }) => {
   return (
     <ul className={styles.gallery}>
       {videos.map((video) => (
@@ -20,7 +16,6 @@ const VideoGallery: FC<IVideoGallery> = ({
             <img
               tabIndex={0}
               role="button"
-              onClick={() => onPlayVideo(video)}
               src={video.poster}
               alt={video.title}
               className={styles.poster}
