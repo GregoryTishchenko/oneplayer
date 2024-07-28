@@ -42,7 +42,6 @@ export default class ApiServices {
   static async getSceneDetails(url: string, timecode: number): Promise<ISceneDetails> {
     try {
       const response = await axios.get<ISceneDetails>(`${url}${timecode}`);
-      console.log(response.data)
       return response.data;
     } catch (error) {
       ApiServices.handleError('Error fetching scene details', error);

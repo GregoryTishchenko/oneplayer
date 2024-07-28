@@ -11,6 +11,7 @@ const SceneList: FC<ISceneList> = ({
   onSceneClick,
   onClose,
   sceneDetailsApi,
+  error,
 }) => {
   return (
     <div
@@ -33,6 +34,7 @@ const SceneList: FC<ISceneList> = ({
           scenes={scenes}
           loading={loading}
           onClose={onClose}
+          error={error}
           onSceneClick={onSceneClick}
           sceneDetailsApi={sceneDetailsApi}
         />

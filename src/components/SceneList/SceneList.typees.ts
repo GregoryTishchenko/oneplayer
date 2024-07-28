@@ -11,7 +11,7 @@ export interface ISceneList {
   error: string | null;
   onSceneClick: (scene: IScene) => void;
   onClose: () => void;
-  sceneDetailsApi: string;
+  sceneDetailsApi?: string;
 }
 
 export interface ICasting {
@@ -40,7 +40,6 @@ export interface ISceneDetails {
 export interface ISceneDetailsProps {
   sceneDetails: ISceneDetails;
   onSceneClick: () => void;
-  isLoading: boolean;
 }
 
 export interface IScenes {

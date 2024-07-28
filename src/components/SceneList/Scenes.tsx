@@ -16,11 +16,13 @@ const Scenes: FC<ISceneList> = ({ scenes, onSceneClick, sceneDetailsApi }) => {
 
   const [fetchSceneDetails, isLoading] = useFetch(
     async (beginTimecode: number) => {
-      const response = await ApiServices.getSceneDetails(
-        sceneDetailsApi,
-        beginTimecode
-      );
-      setSceneDetails(response);
+      if (sceneDetailsApi) {
+        const response = await ApiServices.getSceneDetails(
+          sceneDetailsApi,
+          beginTimecode
+        );
+        setSceneDetails(response);
+      }
     }
   );
 
@@ -45,13 +47,17 @@ const Scenes: FC<ISceneList> = ({ scenes, onSceneClick, sceneDetailsApi }) => {
             {formatTime(scene.endTimecode)})
           </button>
 
-          {expandedScene === scene.id && sceneDetails && (
-            <SceneDetails
-              sceneDetails={sceneDetails}
-              onSceneClick={() => onSceneClick(scene)}
-              isLoading={isLoading}
-            />
-          )}
+          {expandedScene === scene.id &&
+            (isLoading ? (
+              <p>Chargement des détails de la scène...</p>
+            ) : (
+              sceneDetails && (
+                <SceneDetails
+                  sceneDetails={sceneDetails}
+                  onSceneClick={() => onSceneClick(scene)}
+                />
+              )
+            ))}
         </li>
       ))}
     </ul>
