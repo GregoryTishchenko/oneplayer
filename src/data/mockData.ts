@@ -17,6 +17,8 @@ export const mockData: IVideo[] = [
     url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
     beginTimecode: 244,
     endTimecode: 264,
+    scenesApi: 'https://teamplayer.ddns.net:9094/scenes',
+    crewApi: 'https://teamplayer.ddns.net:9094/crew'
   },
   {
     id: 2,

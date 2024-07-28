@@ -25,23 +25,10 @@ function App() {
   return (
     <>
       {showVideoPlayer ? (
-        <VideoPlayer
-          url={activeVideo.url}
-          handleClose={handleCloseVideoPlayer}
-        />
+        <VideoPlayer {...activeVideo} handleClose={handleCloseVideoPlayer} />
       ) : (
         <>
-          <VideoPreview
-            id={activeVideo.id}
-            title={activeVideo.title}
-            description={activeVideo.description}
-            url={activeVideo.url}
-            logo={activeVideo.logo}
-            beginTimecode={activeVideo.beginTimecode}
-            endTimecode={activeVideo.endTimecode}
-            onPlayVideo={handlePlayVideo}
-          />
-
+          <VideoPreview {...activeVideo} onPlayVideo={handlePlayVideo} />
           <VideoGallery videos={mockData} onVideoSelect={handleVideoSelect} />
         </>
       )}

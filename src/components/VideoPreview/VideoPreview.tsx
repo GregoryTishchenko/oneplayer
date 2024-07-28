@@ -6,6 +6,10 @@ import { IVideoPreview } from './VideoPreview.types';
 
 import CustomButton from '../UI/CustomButton/CustomButton';
 import CustomButtonStyles from '../UI/CustomButton/CustomButton.module.scss';
+import CrewList from '../CrewList/CrewList';
+import ApiServices from '../../Api/ApiServices';
+import useFetch from '../../hooks/useFetch';
+import { ICrew } from '../CrewList/CrewList.types';
 
 const VideoPreview: FC<IVideoPreview> = ({
   title,
@@ -14,11 +18,28 @@ const VideoPreview: FC<IVideoPreview> = ({
   url,
   beginTimecode,
   endTimecode,
+  crewApi,
   onPlayVideo,
 }) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
   const playerRef = useRef<RxPlayer | null>(null);
   const [isMuted, setIsMuted] = useState(true);
+
+  const [crew, setCrew] = useState<ICrew[]>([]);
+  const [isCrewListVisible, setIsCrewListVisible] = useState(false);
+
+  const [fetchCrew, isLoading, error] = useFetch(async () => {
+    if (crewApi) {
+      const response = await ApiServices.getScenes(crewApi);
+      setCrew(response);
+    } else {
+      setCrew([]);
+    }
+  });
+
+  useEffect(() => {
+    fetchCrew();
+  }, [url]);
 
   useEffect(() => {
     if (!videoRef.current) return;
@@ -79,6 +100,10 @@ const VideoPreview: FC<IVideoPreview> = ({
     }
   };
 
+  const toggleCrewList = () => {
+    setIsCrewListVisible((prev) => !prev);
+  };
+
   return (
     <div className={styles.videoPreview}>
       <div className={styles.description}>
@@ -91,9 +116,14 @@ const VideoPreview: FC<IVideoPreview> = ({
           >
             Voir la vidéo
           </CustomButton>
-          <CustomButton className={CustomButtonStyles['button--border']}>
-            Plus d'info
-          </CustomButton>
+          {crew.length > 0 && (
+            <CustomButton
+              className={CustomButtonStyles['button--border']}
+              onClick={toggleCrewList}
+            >
+              Plus d'info
+            </CustomButton>
+          )}
           <CustomButton
             className={`${CustomButtonStyles.button} ${
               CustomButtonStyles['button--mute']
@@ -104,7 +134,17 @@ const VideoPreview: FC<IVideoPreview> = ({
           </CustomButton>
         </div>
       </div>
+
       <video ref={videoRef} autoPlay loop muted={isMuted} controls={false} />
+
+      {isCrewListVisible && (
+        <CrewList
+          loading={isLoading}
+          error={error}
+          crew={crew}
+          onClose={() => setIsCrewListVisible(false)}
+        />
+      )}
     </div>
   );
 };

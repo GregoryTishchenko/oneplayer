@@ -7,6 +7,8 @@ export interface IScene {
 
 export interface ISceneList {
   scenes: IScene[];
+  loading: boolean;
+  error: string | null;
   onSceneClick: (scene: IScene) => void;
   onClose: () => void;
 }

@@ -1,0 +1,32 @@
+.crewListContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-height: 90vh;
+  max-width: 90vw;
+  padding: 2rem;
+  z-index: 10;
+  background-color: rgba(10, 10, 10, 0.9);
+  border-radius: 5px;
+  overflow: auto;
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    li {
+      width: 25%;
+      padding: 0 0.5rem 1.5rem;
+      p {
+        margin: 0 0 0.25rem;
+        font-size: 0.875rem;
+      }
+      .role {
+        color: #ffd724;
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

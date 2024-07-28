@@ -9,4 +9,6 @@ interface IVideo {
   url: string;
   beginTimecode: number;
   endTimecode: number;
+  scenesApi?: string;
+  crewApi?: string;
 }
