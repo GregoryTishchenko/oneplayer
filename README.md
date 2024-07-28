@@ -11,7 +11,7 @@ La page principale comprend trois composants :
 - VideoPreview: Ce composant est conçu pour lire un extrait vidéo, afficher une description et proposer les boutons "Voir la vidéo", "Plus d'info" et "Contrôle du son (Mute control)".
 - VideoGallery: Ce composant affiche sous forme de liste toutes les vidéos disponibles (actuellement représentées sous forme de mock-objet dans le fichier /data/mockData.ts).
 
-  ![VideoPreview + VideoGallery](/src/assets/screenshot-2.jpeg)
+  ![VideoPreview + VideoGallery](/src/assets/screenshot-1.jpeg)
 
 - VideoPlayer: Il s'agit du composant principal de l'application, qui fonctionne comme un lecteur vidéo avec les éléments de contrôle suivants : lecture/pause, avance rapide de 10 secondes, retour en arrière de 10 secondes, barre de progression, réglage du volume et bouton d'affichage des scènes clés.
 
