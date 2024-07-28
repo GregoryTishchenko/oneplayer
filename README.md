@@ -2,27 +2,26 @@
 
 ## Description
 
-OnePlayer est une application SPA (Single Page Application) pour la lecture de fichiers vidéo à l'aide du lecteur RxPlayer.\
+OnePlayer est une application SPA (Single Page Application) pour la lecture de fichiers vidéo à l'aide du lecteur RxPlayer.
 
 ## Description de l'interface et des fonctionnalités
 
-La page principale comprend trois composants :\
+La page principale comprend trois composants :
 
 - VideoPreview: Ce composant est conçu pour lire un extrait vidéo, afficher une description et proposer les boutons "Voir la vidéo", "Plus d'info" et "Contrôle du son (Mute control)".
 - VideoGallery: Ce composant affiche sous forme de liste toutes les vidéos disponibles (actuellement représentées sous forme de mock-objet dans le fichier /data/mockData.ts).
-  \
-  ![VideoPreview + VideoGallery](./assets/screenshot-2.jpeg)
-  \
+
+  ![VideoPreview + VideoGallery](/src/assets/screenshot-2.jpeg)
+
 - VideoPlayer: Il s'agit du composant principal de l'application, qui fonctionne comme un lecteur vidéo avec les éléments de contrôle suivants : lecture/pause, avance rapide de 10 secondes, retour en arrière de 10 secondes, barre de progression, réglage du volume et bouton d'affichage des scènes clés.
-  \
-  ![VideoPlayer](./assets/screenshot-2.jpeg)
-  \
+
+  ![VideoPlayer](/src/assets/screenshot-2.jpeg)
+
   Pour traiter les requêtes API, une classe ApiServices est utilisée, avec les méthodes getScenes et getCrew. Pour la gestion des erreurs et le chargement des données, un hook personnalisé useFetch est employé.\
   \
   Puisque l'API ne fournit pas toutes les données, un mock-objet a été créé pour démontrer l'application avec des données de test (fichier /data/mockData.ts). Cet objet contient des informations telles que le titre, la description, etc. Les attributs scenesApi et crewApi permettent de travailler avec ApiServices pour récupérer des données depuis l'API.\
   \
   Voici quelques exemples de données de test :
-  \
 
 ```
 [
@@ -52,21 +51,29 @@ La page principale comprend trois composants :\
 
 ## Installation
 
-### Clone repo:
+Clone repo:
 
-#### `git clone https://github.com/GregoryTishchenko/oneplayer.git`
+```
+git clone https://github.com/GregoryTishchenko/oneplayer.git
+```
 
-### Naviguer dans le répertoire du projet:
+Naviguer dans le répertoire du projet:
 
-#### `cd oneplayer`
+```
+cd oneplayer
+```
 
-### Installer les dépendances avec npm:
+Installer les dépendances avec npm:
 
-#### `npm install`
+```
+npm install
+```
 
-### Lancer l'application en mode développement
+Lancer l'application en mode développement
 
-#### `npm run dev`
+```
+npm run dev
+```
 
 Lance l'application en mode développement.\
 Ouvrez [http://localhost:5173/](http://localhost:5173/) pour la visualiser dans votre navigateur.
