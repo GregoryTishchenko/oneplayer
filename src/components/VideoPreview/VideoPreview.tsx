@@ -30,7 +30,7 @@ const VideoPreview: FC<IVideoPreview> = ({
 
   const [fetchCrew, isLoading, error] = useFetch(async () => {
     if (crewApi) {
-      const response = await ApiServices.getScenes(crewApi);
+      const response = await ApiServices.getCrew(crewApi);
       setCrew(response);
     } else {
       setCrew([]);
